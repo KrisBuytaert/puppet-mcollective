@@ -20,9 +20,12 @@ class mcollective::config {
     content => template("mcollective/server.cfg.erb"),
     notify  => Service["mcollective"]
   }
-  file { "/etc/mcollective/facts.yaml":
-    content => template("mcollective/facts.yaml.erb")
-  }
+ 
+  
+  # Disabling Fact updates as they are generated from facter using cron  
+  # file { "/etc/mcollective/facts.yaml":
+  #  content => template("mcollective/facts.yaml.erb")
+  #}
 
   @file { "/etc/nagios/nrpe_conf.d/mcollective_touch_check.cfg":
     tag => "nagios_nrpe_check",

@@ -12,10 +12,7 @@ class mcollective::client::actual {
 }
 
 class mcollective::client::install {
-  package { "mcollective-client": 
-                ensure => present, 
-                require => Class["repo"]
-  }
+  package { "mcollective-client": ensure => present }
 }
 
 class mcollective::client::config {

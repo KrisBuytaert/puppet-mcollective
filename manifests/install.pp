@@ -10,8 +10,7 @@ class mcollective::install::redhat {
 
   package { "stomp":
     name => "rubygem-stomp",
-    ensure => "installed",
-    require => Class["repo"]
+    ensure => "installed"
   }
 
   package { "mcollective":

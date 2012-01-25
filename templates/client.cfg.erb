@@ -19,7 +19,7 @@ plugin.stomp.password = <%= scope.lookupvar("mcollective::stomp_password") %>
 <% end -%>
 
 # Facts
-<% unless scope.lookupvar("mcollective::factsource").empty? -%>
+<% if scope.lookupvar("mcollective::factsource") != 'yaml' -%>
 factsource = <%= scope.lookupvar("mcollective::factsource") -%>
 <% else -%>
 factsource = yaml
