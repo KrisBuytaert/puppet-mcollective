@@ -1,4 +1,8 @@
 
+No clue where this was forked of initially anymore :(  
+Asked RI .. could have been MikePea's but we're not sure.
+
+
 MCollective Puppet module
 -------------------------
 
