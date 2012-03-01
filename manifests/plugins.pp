@@ -1,15 +1,17 @@
 class mcollective::plugins {
 
-  case $operatingsystem {
-    debian,ubuntu: { $p_base = "/usr/share/mcollective/plugins/mcollective" }
-    redhat,centos: { $p_base = "/usr/libexec/mcollective/mcollective" }
+  case $::operatingsystem {
+    debian,ubuntu: { $p_base = '/usr/share/mcollective/plugins/mcollective' }
+    redhat,centos: { $p_base = '/usr/libexec/mcollective/mcollective' }
   }
-  $s_base = "puppet:///modules/mcollective/plugins"
+  $s_base = 'puppet:///modules/mcollective/plugins'
 
   File {
-    owner => root, group => root, mode  => 0444,
-    require => Class["mcollective::install"],
-    notify => Service["mcollective"],
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0444',
+    require => Class['mcollective::install'],
+    notify  => Service['mcollective'],
   }
 
   file { "${p_base}/facts/facter.rb": source => "${s_base}/facts/facter/facter.rb" }
