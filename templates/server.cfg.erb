@@ -27,9 +27,9 @@ factsource = yaml
 plugin.yaml = /etc/mcollective/facts.yaml
 <% end -%>
 
-<% if has_variable?('puppetversion') -%>
+<% if has_variable?('::puppetversion') -%>
 # Puppet setup
-classesfile = /var/lib/puppet/<%= puppetversion =~ /^0\.24\./ ? "state" : "" %>/classes.txt
+classesfile = /var/lib/puppet/<%= scope.lookupvar("::puppetversion") =~ /^0\.24\./ ? "state" : "" %>/classes.txt
 <% end -%>
 
 <% ! if has_variable?("mcollective::nrpe_conf_dir") %>
