@@ -1,5 +1,5 @@
 class mcollective::client {
-    case $operatingsystem {
+    case $::operatingsystem {
       ubuntu,debian,redhat,centos: { include mcollective::client::actual }
       default: { notice("${hostname}: mcollective: module does not yet support $operatingsystem") }
     }
@@ -17,24 +17,27 @@ class mcollective::client::install {
 
 class mcollective::client::config {
 
-  file { "/etc/mcollective/client.cfg":
-    content => template("mcollective/client.cfg.erb"),
-    mode    => 0440, owner   => root,
+  file { '/etc/mcollective/client.cfg':
+    content => template('mcollective/client.cfg.erb'),
+    mode    => '0440',
+    owner   => 'root',
     group   => $mcollective::client_group ? {
-      "" => "root",
+      ''      => 'root',
       default => $mcollective::client_group
     },
-    require => Class["mcollective::client::install"]
+    require => Class['mcollective::client::install']
   }
 }
 
 class mcollective::client::plugins {
-  $bin_dir = "/usr/local/bin"
-  $s_base = "puppet:///modules/mcollective/plugins"
+  $bin_dir = '/usr/local/bin'
+  $s_base = 'puppet:///modules/mcollective/plugins'
 
   File {
-    owner => root, group => root, mode  => 0555,
-    require => Class["mcollective::client::install"],
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0555',
+    require => Class['mcollective::client::install'],
   }
 
   file { "${bin_dir}/mc-service": source => "${s_base}/agent/service/mc-service" }
