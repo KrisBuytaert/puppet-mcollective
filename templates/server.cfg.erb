@@ -5,12 +5,13 @@ loglevel = info
 daemonize = 1
 
 # Plugins 
-<% unless scope.lookupvar("mcollective::psk").empty? -%>
+
+<% ! if has_variable?("mcollective::psk") %>
 securityprovider = psk
 plugin.psk = <%= scope.lookupvar("mcollective::psk") %>
 <% end -%>
 
-<% unless scope.lookupvar("mcollective::stomp_host").empty? -%>
+<% ! if has_variable?("mcollective::stomp_host") %>
 connector = stomp
 plugin.stomp.host = <%= scope.lookupvar("mcollective::stomp_host") %>
 plugin.stomp.port = <%= scope.lookupvar("mcollective::stomp_port") %>
@@ -19,22 +20,23 @@ plugin.stomp.password = <%= scope.lookupvar("mcollective::stomp_password") %>
 <% end -%>
 
 # Facts
-<% unless scope.lookupvar("mcollective::factsource").empty? -%>
+<% ! if has_variable?("mcollective::factsource") %>
 factsource = <%= scope.lookupvar("mcollective::factsource") -%>
 <% else -%>
 factsource = yaml
 plugin.yaml = /etc/mcollective/facts.yaml
 <% end -%>
 
-<% if has_variable?('puppetversion') -%>
+<% if has_variable?('::puppetversion') -%>
 # Puppet setup
-classesfile = /var/lib/puppet/<%= puppetversion =~ /^0\.24\./ ? "state" : "" %>/classes.txt
+classesfile = /var/lib/puppet/<%= scope.lookupvar("::puppetversion") =~ /^0\.24\./ ? "state" : "" %>/classes.txt
 <% end -%>
 
-<% unless scope.lookupvar("mcollective::nrpe_conf_dir").empty? -%>
+<% ! if has_variable?("mcollective::nrpe_conf_dir") %>
 plugin.nrpe.conf_dir = <%= scope.lookupvar("mcollective::nrpe_conf_dir") %>
 <% end -%>
 
-<% unless scope.lookupvar("mcollective::filemgr_touch_file").empty? -%>
+<% ! if has_variable?("mcollective::filemgr_touch_file") %>
 plugin.filemgr.touch_file = <%= scope.lookupvar("mcollective::filemgr_touch_file") %>
-<% end -%>
+ <% end -%>
+
