@@ -3,13 +3,14 @@ class mcollective::config {
   case $::operatingsystem {
     debian,ubuntu: { $libdir = '/usr/share/mcollective/plugins' }
     redhat,centos: { $libdir = '/usr/libexec/mcollective' }
+    default: { fail("${::hostname}: trying to configure on a unsupported operatingsystem: ${::operatingsystem}") }
   }
 
   File {
     owner   => 'root',
     group   => 'root',
     mode    => '0440',
-    require => Class["mcollective::install"]
+    require => Class['mcollective::install'],
   }
 
   file { '/etc/mcollective':
@@ -29,13 +30,13 @@ class mcollective::config {
   #}
 
   @file { '/etc/nagios/nrpe_conf.d/mcollective_touch_check.cfg':
-    tag => 'nagios_nrpe_check',
     ensure => absent,
+    tag    => 'nagios_nrpe_check',
   }
 
   #@nagios::nrpe_command { "check_mcollective_touch":
-  #  command   => "check_file_age",
+  #  command    => "check_file_age",
   #  parameters => "-w 600 -c 1200 /var/run/mcollective.plugin.filemgr.touch",
-  #  cplugdir  => 'system'
+  #  cplugdir   => 'system'
   #}
 }
