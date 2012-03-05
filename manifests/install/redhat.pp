@@ -1,12 +1,12 @@
 class mcollective::install::redhat {
 
   package { 'stomp':
+    ensure => 'installed',
     name   => 'rubygem-stomp',
-    ensure => 'installed'
   }
 
   package { 'mcollective':
-    ensure  => present,
+    ensure  => 'present',
     alias   => 'mcollective',
     require => Package['stomp'],
   }

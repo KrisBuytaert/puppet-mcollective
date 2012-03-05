@@ -1,8 +1,8 @@
 class mcollective::install::debian {
 
   package { 'stomp':
-    provider => 'gem',
     ensure   => '1.1',
+    provider => 'gem',
   }
 
   package { 'mcollective':
