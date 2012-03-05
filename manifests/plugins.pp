@@ -4,13 +4,14 @@ class mcollective::plugins {
     debian,ubuntu: { $p_base = '/usr/share/mcollective/plugins/mcollective' }
     redhat,centos: { $p_base = '/usr/libexec/mcollective/mcollective' }
   }
+
   $s_base = 'puppet:///modules/mcollective/plugins'
 
   File {
     owner   => 'root',
     group   => 'root',
     mode    => '0444',
-    require => Class['mcollective::install'],
+    require => Package['mcollective'],
     notify  => Service['mcollective'],
   }
 

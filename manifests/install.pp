@@ -6,29 +6,3 @@ class mcollective::install {
   }
 }
 
-class mcollective::install::redhat {
-
-  package { 'stomp':
-    name   => 'rubygem-stomp',
-    ensure => 'installed'
-  }
-
-  package { 'mcollective':
-    ensure  => present,
-    require => Package['stomp'],
-  }
-
-}
-
-class mcollective::install::debian {
-
-  package { 'stomp':
-    provider => 'gem',
-    ensure   => '1.1',
-  }
-
-  package { 'mcollective':
-    ensure  => present,
-    require => Package['stomp'],
-  }
-}
