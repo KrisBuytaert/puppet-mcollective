@@ -2,7 +2,11 @@ topicprefix = /topic/
 libdir = <%= libdir %>
 logfile = /var/log/mcollective.log
 loglevel = info
+<% if @operatingsystem == 'Ubuntu' %>
+daemonize = 0
+<% else %>
 daemonize = 1
+<% end %>
 
 # Plugins 
 
