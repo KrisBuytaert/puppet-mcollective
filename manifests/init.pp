@@ -3,7 +3,7 @@ class mcollective(
   $stomp_user     = 'guest',
   $stomp_password = 'guest',
   $stomp_host     = 'puppetmaster',
-  $stomp_port     = '6163',
+  $stomp_port     = '61613',
   $factsource     = 'facter'
 ){
   include mcollective::service
