@@ -11,7 +11,7 @@ class mcollective::plugins {
   File {
     owner   => 'root',
     group   => 'root',
-    mode    => '0444',
+    mode    => '0644',
     require => Package['mcollective'],
     notify  => Service['mcollective'],
   }
