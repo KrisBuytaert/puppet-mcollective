@@ -1,14 +1,13 @@
 class mcollective::install::debian {
 
-  package { 'stomp':
-    ensure   => '1.1',
-    provider => 'gem',
+  package { 'stompserver':
+    ensure   => 'present',
   }
 
   package { 'mcollective':
     ensure  => present,
     alias   => 'mcollective',
-    require => Package['stomp'],
+    require => Package['stompserver'],
   }
 }
 

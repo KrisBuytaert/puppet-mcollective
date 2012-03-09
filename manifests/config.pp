@@ -9,7 +9,7 @@ class mcollective::config {
   File {
     owner   => 'root',
     group   => 'root',
-    mode    => '0440',
+    mode    => '0640',
     require => Class['mcollective::install'],
   }
 
