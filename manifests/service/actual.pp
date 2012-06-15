@@ -1,14 +1,12 @@
 class mcollective::service::actual {
 
-  include mcollective::install
-  include mcollective::config
-  include mcollective::plugins
-
+  class {'mcollective::install': } ->
+  class {'mcollective::config': } ->
+  class {'mcollective::plugins': } ->
   service { 'mcollective':
     ensure     => 'running',
     hasstatus  => true,
     hasrestart => true,
-    require    => Class['mcollective::install'],
   }
 }
 
