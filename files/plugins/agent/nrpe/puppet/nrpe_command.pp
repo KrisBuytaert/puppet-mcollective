@@ -6,7 +6,7 @@ define nrpe_command (
 ) {
 
   # find out the default nagios paths for plugis
-  $defaultdir = $architecture ? {
+  $defaultdir = $::architecture ? {
     'x86_64' => '/usr/lib64/nagios/plugins',
     default  => '/usr/lib/nagios/plugins',
   }
