@@ -1,6 +1,6 @@
 topicprefix = /topic/
 <%# strip mcollective direcotry suffix -%>
-libdir = <%= scope.lookupvar("mcollective::plugins::p_base").sub(/\/mcollective$/,"") %>
+libdir = <%= scope.lookupvar("::mcollective::plugins::p_base").sub(/\/mcollective$/,"") %>
 logfile = /dev/null
 loglevel = info
 
