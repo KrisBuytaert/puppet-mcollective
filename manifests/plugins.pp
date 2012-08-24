@@ -34,7 +34,7 @@ class mcollective::plugins {
   file { "${p_base}/agent/filemgr.rb":
     source => "${s_base}/agent/filemgr/filemgr.rb",
   }
-  file { '/usr/lib/ruby/site_ruby/1.8/facter/mysql.rb':
+  file { "${p_base}/facts/mysql.rb":
     source => "${s_base}/facts/facter/mysql.rb",
   }
   file { "${p_base}/facts/facter_facts.rb":
