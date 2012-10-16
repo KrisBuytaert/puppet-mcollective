@@ -9,7 +9,7 @@ class mcollective::config {
   File {
     owner   => 'root',
     group   => 'root',
-    mode    => '0440',
+    mode    => '0640',
     require => Class['mcollective::install'],
   }
 
@@ -20,7 +20,8 @@ class mcollective::config {
 
   file { '/etc/mcollective/server.cfg':
     content => template('mcollective/server.cfg.erb'),
-    notify  => Service['mcollective']
+    notify  => Service['mcollective'],
+    require => Class['mcollective::plugins'],
   }
 
 
