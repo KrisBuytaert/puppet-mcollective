@@ -1,8 +1,8 @@
 class mcollective::install::debian {
 
-  package { 'stomp':
-    ensure   => '1.1',
-    provider => 'gem',
+  package { 'libstomp-ruby':
+    ensure   => installed,
+    alias    => 'stomp',
   }
 
   package { 'mcollective':
