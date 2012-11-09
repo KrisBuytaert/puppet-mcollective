@@ -18,7 +18,7 @@ mysql_path = '/usr/bin/mysql'
 
 if File.exists?(mysql_path)
 
-  mysqlcmd = '#{mysqlcmd} -B -N -e'
+  mysqlcmd = "#{mysql_path} -B -N -e"
   #status = %x[#{mysqlcmd} "SHOW STATUS"].to_s.strip
   status = %x[#{mysqlcmd} "SHOW STATUS"].split("\n")
   replica = %x[#{mysqlcmd} "SHOW SLAVE STATUS\\G"].split("\n")
