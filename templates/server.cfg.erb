@@ -41,3 +41,14 @@ plugin.nrpe.conf_dir = <%= scope.lookupvar("mcollective::nrpe_conf_dir") %>
 <% ! if has_variable?("mcollective::filemgr_touch_file") -%>
 plugin.filemgr.touch_file = <%= scope.lookupvar("mcollective::filemgr_touch_file") %>
 <% end -%>
+
+
+# Collectives
+#
+<% ! if has_variable?("mcollective::collectives") -%>
+collectives = <%= scope.lookupvar("mcollective::collectives") %>
+<% end -%>
+<% ! if has_variable?("mcollective::main_collective") -%>
+collectives = <%= scope.lookupvar("mcollective::main_collective") %>
+<% end -%>
+

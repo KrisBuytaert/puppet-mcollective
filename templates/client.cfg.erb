@@ -26,3 +26,12 @@ factsource = yaml
 plugin.yaml = /etc/mcollective/facts.yaml
 <% end -%>
 
+# Collectives
+#
+<% ! if has_variable?("mcollective::collectives") -%>
+collectives = <%= scope.lookupvar("mcollective::collectives") %>
+<% end -%>
+<% ! if has_variable?("mcollective::main_collective") -%>
+collectives = <%= scope.lookupvar("mcollective::main_collective") %>
+<% end -%>
+
