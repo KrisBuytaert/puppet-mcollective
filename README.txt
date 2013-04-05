@@ -31,7 +31,7 @@ include ::mcollective::plugins::filemgr
 
 # If your distribution doesn't have packages for the plugin 
 # you want to use, you an use a parameter which will install 
-# the plugin files manually. (not recommented though)
+# the plugin files manually. (not recommended though)
 class {'mcollective::plugins::package' :
 	provider => 'file',
 }
