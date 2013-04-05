@@ -9,4 +9,3 @@ class mcollective::service::actual {
     hasrestart => true,
   }
 }
-
