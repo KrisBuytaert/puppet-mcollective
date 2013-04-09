@@ -15,5 +15,4 @@ class mcollective::plugins {
     require => Package['mcollective'],
     notify  => Service['mcollective'],
   }
-  
 }
