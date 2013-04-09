@@ -2,9 +2,9 @@ class mcollective::plugins::puppet (
   $provider = 'package',
 ) {
 
-  $packages = [ "mcollective-puppet-agent", 
-                "mcollective-puppet-client", 
-                "mcollective-puppet-common" ]
+  $packages = [ 'mcollective-puppet-agent',
+                'mcollective-puppet-client',
+                'mcollective-puppet-common' ]
 
   $p_base = $mcollective::plugins::p_base
   $s_base = $mcollective::plugins::s_base
@@ -13,9 +13,9 @@ class mcollective::plugins::puppet (
 
     package : {
       package { $packages:
-        ensure => installed,
+        ensure  => 'installed',
         require => Package['mcollective'],
-        notify => Service['mcollective'],
+        notify  => Service['mcollective'],
       }
     }
 

@@ -2,7 +2,7 @@ class mcollective::plugins::facter (
   $provider = 'package',
 ) {
 
-  $packages = [ 'mcollective-facter-facts']
+  $packages = [ 'mcollective-facter-facts' ]
 
   $p_base = $mcollective::plugins::p_base
   $s_base = $mcollective::plugins::s_base
@@ -11,7 +11,7 @@ class mcollective::plugins::facter (
 
     package : {
       package { $packages:
-        ensure  => installed,
+        ensure  => 'installed',
         require => Package['mcollective'],
         notify  => Service['mcollective'],
       }

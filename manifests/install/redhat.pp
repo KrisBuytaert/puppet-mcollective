@@ -10,7 +10,7 @@ class mcollective::install::redhat {
     alias   => 'mcollective',
     require => Package['stomp'],
   }
-  
+
   package { 'mcollective-common':
     ensure  => 'installed',
     require => Package['mcollective'],
