@@ -13,7 +13,7 @@ class mcollective::plugins::filemgr (
 
     package : {
       package { $packages:
-        ensure  => installed,
+        ensure  => 'latest',
         require => Package['mcollective'],
         notify  => Service['mcollective'],
       }
