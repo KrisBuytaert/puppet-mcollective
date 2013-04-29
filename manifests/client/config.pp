@@ -11,7 +11,7 @@ class mcollective::client::config {
 
   file { '/etc/mcollective/client.cfg':
     content => template('mcollective/client.cfg.erb'),
-    mode    => '0440',
+    mode    => '0640',
     owner   => 'root',
     group   => $group,
     require => Class['mcollective::client::install']

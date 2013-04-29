@@ -1,50 +1,35 @@
 module MCollective
-    module Agent
-        # An agent that receives and logs RPC Audit messages sent from the accompanying Audit plugin
-        class Centralrpclog
-            attr_reader :timeout, :meta
+  module Agent
+    # An agent that receives and logs RPC Audit messages sent from the accompanying Audit plugin
+    class Centralrpclog
+      attr_reader :timeout, :meta
 
-            def initialize
-                @timeout = 1
+      require 'pp'
 
-                @config = Config.instance
+      def initialize
+        @timeout = 1
 
-                @meta = {:license => "Apache 2",
-                         :author => "R.I.Pienaar <rip@devco.net>",
-                         :url => "http://code.google.com/p/mcollective-plugins/"}
-            end
+        @meta = {:license => "Apache License, Version 2",
+                 :author => "R.I.Pienaar <rip@devco.net>",
+                 :timeout => @timeout,
+                 :name => "Discovery Agent",
+                 :version => "0.0.1",
+                 :url => "http://www.marionette-collective.org",
+                 :description => "MCollective Discovery Agent"}
+      end
 
-            def handlemsg(msg, connection)
-                request = msg[:body]
+      def handlemsg(msg, connection)
+        request = msg[:body]
 
-                require 'pp'
+        logfile = Config.instance.pluginconf.fetch("centralrpclog.logfile", "/var/log/mcollective-rpcaudit.log")
 
-                logfile = Config.instance.pluginconf["centralrpclog.logfile"] || "/var/log/mcollective-rpcaudit.log"
-
-                File.open(logfile, "a") do |f|
-                    f.puts("#{Time.new.strftime("%D %T")} #{msg[:senderid]}> #{request.uniqid}: #{Time.at(request.time).strftime("%D %T")} caller=#{request.caller}@#{request.sender} agent=#{request.agent} action=#{request.action}")
-                    f.puts("#{Time.new.strftime("%D %T")} #{msg[:senderid]}> #{request.uniqid}: #{request.data.pretty_print_inspect}")
-                end
-
-                # never reply
-                nil
-            end
-
-            def help
-                <<-EOH
-                RPC Central Audit Agent
-                =======================
-
-                An agent that receives audit requests from an SimpleRPC Audit plugin and logs locally
-                using this you can build a central audit of all SimpleRPC requests.
-
-                Provide it with a config option:
-
-                plugin.centralrpclog.logfile = /var/log/simplerpc-audit.log
-                EOH
-            end
+        File.open(logfile, "a") do |f|
+          f.puts("%s %s> %s %s caller=%s#%s agent=%s action=%s %s" % [Time.new.strftime("%D %T"), msg[:senderid], request.uniqid, Time.at(request.time).strftime("%D %T"), request.caller, request.sender, request.agent, request.action, request.data.pretty_print_inspect])
         end
-    end
-end
 
-# vi:tabstop=4:expandtab:ai:filetype=ruby
+        # never reply
+        nil
+      end
+    end
+  end
+end

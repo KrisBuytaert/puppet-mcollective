@@ -1,12 +1,13 @@
 class mcollective::install::debian {
 
-  package { 'stomp':
-    ensure   => present,
-    name     => 'libstomp_ruby',
+  package { 'libstomp-ruby':
+    ensure   => installed,
+    alias    => 'stomp',
   }
 
   package { 'mcollective':
-    ensure  => present,
+    ensure  => latest,
+    alias   => 'mcollective',
     require => Package['stomp'],
   }
 }

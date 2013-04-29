@@ -6,9 +6,14 @@ class mcollective::install::redhat {
   }
 
   package { 'mcollective':
-    ensure  => 'present',
+    ensure  => 'latest',
     alias   => 'mcollective',
     require => Package['stomp'],
+  }
+
+  package { 'mcollective-common':
+    ensure  => 'latest',
+    require => Package['mcollective'],
   }
 
 }
