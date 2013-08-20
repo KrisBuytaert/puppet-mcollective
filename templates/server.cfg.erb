@@ -9,7 +9,9 @@ daemonize = 1
 <% end -%>
 identity = <%= @fqdn -%>
 
-# Plugins 
+direct_addressing = <%= scope.lookupvar("mcollective::use_direct_addressing") %>
+
+# Plugins
 <% ! if has_variable?("mcollective::psk") -%>
 securityprovider = psk
 plugin.psk = <%= scope.lookupvar("mcollective::psk") %>
