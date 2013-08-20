@@ -10,6 +10,8 @@ securityprovider = psk
 plugin.psk = <%= scope.lookupvar("mcollective::psk") %>
 <% end -%>
 
+direct_addressing = <%= scope.lookupvar("mcollective::direct_addressing") %>
+
 default_discovery_method = <%= scope.lookupvar("mcollective::default_discovery_method") %>
 
 connector = <%= scope.lookupvar("mcollective::connector") %>
