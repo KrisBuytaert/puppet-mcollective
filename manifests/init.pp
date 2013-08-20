@@ -20,8 +20,8 @@ class mcollective(
   }
 
   case $direct_addressing {
-    true: { $direct_addressing = '1' }
-    default: { $direct_addressing = '0' }
+    true: { $use_direct_addressing = '1' }
+    default: { $use_direct_addressing = '0' }
   }
 
   case $connector {

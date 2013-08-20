@@ -13,7 +13,7 @@ plugin.psk = <%= scope.lookupvar("mcollective::psk") %>
 default_discovery_method = <%= scope.lookupvar("mcollective::default_discovery_method") %>
 
 connector = <%= scope.lookupvar("mcollective::connector") %>
-direct_addressing = <%= scope.lookupvar("mcollective::direct_addressing") %>
+direct_addressing = <%= scope.lookupvar("mcollective::use_direct_addressing") %>
 
 <% if scope.lookupvar("mcollective::connector") == 'stomp' -%>
 plugin.stomp.host = <%= scope.lookupvar("mcollective::stomp_host") %>
