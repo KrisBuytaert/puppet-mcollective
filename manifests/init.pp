@@ -8,7 +8,7 @@ class mcollective(
   $collectives              = unset,
   $main_collective          = unset,
   $connector                = 'stomp',
-  $direct_addressing        = false,
+  $direct_addressing        = '0',
   $default_discovery_method = 'mc',
   $puppetdb_host            = unset,
   $puppetdb_port            = '8080',
@@ -17,11 +17,6 @@ class mcollective(
 
   if $factsource == 'facter' {
     include mcollective::plugins::facter
-  }
-
-  case $direct_addressing {
-    true: { $use_direct_addressing = '1' }
-    default: { $use_direct_addressing = '0' }
   }
 
   case $connector {
