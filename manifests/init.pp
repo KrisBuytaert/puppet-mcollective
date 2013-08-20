@@ -1,14 +1,17 @@
 class mcollective(
-  $psk                = unset,
-  $stomp_user         = 'guest',
-  $stomp_password     = 'guest',
-  $stomp_host         = 'puppetmaster',
-  $stomp_port         = '61613',
-  $factsource         = 'facter',
-  $collectives        = unset,
-  $main_collective    = unset,
-  $connector          = 'stomp',
-  $direct_addressing  = false,
+  $psk                      = unset,
+  $stomp_user               = 'guest',
+  $stomp_password           = 'guest',
+  $stomp_host               = 'puppetmaster',
+  $stomp_port               = '61613',
+  $factsource               = 'facter',
+  $collectives              = unset,
+  $main_collective          = unset,
+  $connector                = 'stomp',
+  $direct_addressing        = false,
+  $default_discovery_method = unset,
+  $puppetdb_host            = unset,
+  $puppetdb_port            = '8080',
 ){
   include mcollective::service
 
