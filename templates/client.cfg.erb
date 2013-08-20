@@ -29,7 +29,7 @@ plugin.rabbitmq.pool.1.password = <%= scope.lookupvar("mcollective::stomp_passwo
 <% if scope.lookupvar("mcollective::default_discovery_method") == 'puppetdb' -%>
 plugin.discovery.puppetdb.host = <%= scope.lookupvar("mcollective::puppetdb_host") %>
 plugin.discovery.puppetdb.port = <%= scope.lookupvar("mcollective::puppetdb_port") %>
-<% else -%>
+<% end -%>
 
 # Facts
 <% if scope.lookupvar("mcollective::factsource") != 'yaml' -%>
