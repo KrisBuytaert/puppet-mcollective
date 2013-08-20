@@ -1,0 +1,4 @@
+[submodule "files/plugins/discovery/puppetdb"]
+    path = files/plugins/discovery/puppetdb
+    url = ssh://git@redmine.inuits.eu:2223/puppetmaster/modules/mcollective/mcollective-puppetdb-discovery.git
+
