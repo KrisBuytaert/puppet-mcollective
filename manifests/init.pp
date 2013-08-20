@@ -9,7 +9,7 @@ class mcollective(
   $main_collective          = unset,
   $connector                = 'stomp',
   $direct_addressing        = false,
-  $default_discovery_method = unset,
+  $default_discovery_method = 'mc',
   $puppetdb_host            = unset,
   $puppetdb_port            = '8080',
 ){

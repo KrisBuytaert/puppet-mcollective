@@ -10,6 +10,8 @@ securityprovider = psk
 plugin.psk = <%= scope.lookupvar("mcollective::psk") %>
 <% end -%>
 
+default_discovery_method = <%= scope.lookupvar("mcollective::default_discovery_method") %>
+
 connector = <%= scope.lookupvar("mcollective::connector") %>
 direct_addressing = <%= scope.lookupvar("mcollective::direct_addressing") %>
 
@@ -26,7 +28,7 @@ plugin.rabbitmq.pool.1.user = <%= scope.lookupvar("mcollective::stomp_user") %>
 plugin.rabbitmq.pool.1.password = <%= scope.lookupvar("mcollective::stomp_password") %>
 <% end -%>
 
-<% if scope.lookupvar("mcollective::default_discovery_method") == 'puppetdb' -%>
+<% unless scope.lookupvar("mcollective::puppetdb_host").empty? -%>
 plugin.discovery.puppetdb.host = <%= scope.lookupvar("mcollective::puppetdb_host") %>
 plugin.discovery.puppetdb.port = <%= scope.lookupvar("mcollective::puppetdb_port") %>
 <% end -%>
