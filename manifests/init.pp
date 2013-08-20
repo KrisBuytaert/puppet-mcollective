@@ -1,18 +1,24 @@
 class mcollective(
-  $psk             = unset,
-  $stomp_user      = 'guest',
-  $stomp_password  = 'guest',
-  $stomp_host      = 'puppetmaster',
-  $stomp_port      = '61613',
-  $factsource      = 'facter',
-  $collectives     = unset,
-  $main_collective = unset,
-  $connector       = 'stomp',
+  $psk                = unset,
+  $stomp_user         = 'guest',
+  $stomp_password     = 'guest',
+  $stomp_host         = 'puppetmaster',
+  $stomp_port         = '61613',
+  $factsource         = 'facter',
+  $collectives        = unset,
+  $main_collective    = unset,
+  $connector          = 'stomp',
+  $direct_addressing  = false,
 ){
   include mcollective::service
 
   if $factsource == 'facter' {
     include mcollective::plugins::facter
+  }
+
+  case $direct_addressing {
+    true: { $direct_addressing = '1' }
+    default: { $direct_addressing = '0' }
   }
 
   case $connector {

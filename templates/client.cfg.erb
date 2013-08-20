@@ -1,16 +1,18 @@
 topicprefix = /topic/
-<%# strip mcollective direcotry suffix -%>
+<%# strip mcollective directory suffix -%>
 libdir = <%= scope.lookupvar("::mcollective::plugins::p_base").sub(/\/mcollective$/,"") %>
 logfile = /dev/null
 loglevel = info
 
-# Plugins 
+# Plugins
 <% unless scope.lookupvar("mcollective::psk").empty? -%>
 securityprovider = psk
 plugin.psk = <%= scope.lookupvar("mcollective::psk") %>
 <% end -%>
 
 connector = <%= scope.lookupvar("mcollective::connector") %>
+direct_addressing = <%= scope.lookupvar("mcollective::direct_addressing") %>
+
 <% if scope.lookupvar("mcollective::connector") == 'stomp' -%>
 plugin.stomp.host = <%= scope.lookupvar("mcollective::stomp_host") %>
 plugin.stomp.port = <%= scope.lookupvar("mcollective::stomp_port") %>
