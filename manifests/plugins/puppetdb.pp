@@ -11,7 +11,7 @@ class mcollective::plugins::puppetdb (
 
     package : {
       package { $packages:
-        ensure  => 'latest',
+        ensure  =>  "${mcollective::params::mcollectivepuppetdbversion}",
         require => Package['mcollective'],
         notify  => Service['mcollective'],
       }

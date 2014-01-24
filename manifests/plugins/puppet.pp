@@ -13,7 +13,7 @@ class mcollective::plugins::puppet (
 
     package : {
       package { $packages:
-        ensure  => 'latest',
+        ensure  =>  "${mcollective::params::mcollectivepuppetversion}",
         require => Package['mcollective'],
         notify  => Service['mcollective'],
       }
