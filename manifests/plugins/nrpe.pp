@@ -13,7 +13,7 @@ class mcollective::plugins::nrpe (
 
     package : {
       package { $packages:
-        ensure  =>  "${mcollective::params::mcollectivenrpeversion}",
+        ensure  => $::mcollective::params::mcollectivenrpeversion,
         require => Package['mcollective'],
         notify  => Service['mcollective'],
       }
