@@ -11,7 +11,7 @@ class mcollective::plugins::facter (
 
     package : {
       package { $packages:
-        ensure  => "${mcollective::params::mcollectivefacterversion}",
+        ensure  => $::mcollective::params::mcollectivefacterversion,
         notify  => Service['mcollective'],
       }
     }

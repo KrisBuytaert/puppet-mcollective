@@ -13,7 +13,7 @@ class mcollective::plugins::service (
 
     package : {
       package { $packages:
-        ensure  =>  "${mcollective::params::mcollectiveserviceversion}",
+        ensure  => $::mcollective::params::mcollectiveserviceversion,
         require => Package['mcollective'],
         notify  => Service['mcollective'],
       }
