@@ -1,4 +1,4 @@
-class mcollective::params (
+class mcollective::params {
   $mcollectiveversion = '2.2.4-1.el6',
   $mcollectivecommonversion = '2.2.4-1.el6',
   $mcollectivefacterversion = '1.0.0-1',
@@ -8,5 +8,4 @@ class mcollective::params (
   $mcollectivepuppetdbversion = '1.1-1',
   $mcollectivepuppetversion = '1.6.0-1',
   $mcollectiveserviceversion = '3.1.2-1',
-)
-{}
+}
