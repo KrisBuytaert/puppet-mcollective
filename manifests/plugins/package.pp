@@ -13,7 +13,7 @@ class mcollective::plugins::package (
 
     package : {
       package { $packages:
-        ensure  => 'latest',
+        ensure  =>  "${mcollective::params::mcollectivepackageversion}",
         require => Package['mcollective'],
         notify  => Service['mcollective'],
       }

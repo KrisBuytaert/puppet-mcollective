@@ -6,13 +6,13 @@ class mcollective::install::redhat {
   }
 
   package { 'mcollective':
-    ensure  => 'installed',
+    ensure  => "${mcollective::params::mcollectiveversion}",
     alias   => 'mcollective',
     require => Package['stomp'],
   }
 
   package { 'mcollective-common':
-    ensure  => 'installed',
+    ensure  => "${mcollective::params::mcollectivecommonversion}",
     require => Package['mcollective'],
   }
 
