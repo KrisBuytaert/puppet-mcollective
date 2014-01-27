@@ -6,7 +6,7 @@ class mcollective::install::debian {
   }
 
   package { 'mcollective':
-    ensure  => latest,
+    ensure  => installed,
     alias   => 'mcollective',
     require => Package['stomp'],
   }
