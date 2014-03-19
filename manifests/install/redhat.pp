@@ -1,8 +1,13 @@
 class mcollective::install::redhat {
+  include mcollective::params
 
   package { 'stomp':
     ensure => 'installed',
     name   => 'rubygem-stomp',
+  }
+
+  package { 'mcollective-common':
+    ensure  => $::mcollective::params::mcollectivecommonversion,
   }
 
   package { 'mcollective':
@@ -11,10 +16,5 @@ class mcollective::install::redhat {
     require => Package['stomp'],
   }
 
-  package { 'mcollective-common':
-    ensure  => $::mcollective::params::mcollectivecommonversion,
-    require => Package['mcollective'],
-  }
-
+  Package['mcollective-common'] -> Package['mcollective']
 }
-
